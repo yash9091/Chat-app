@@ -46,18 +46,18 @@ app.get("/", (req, res) => {
     
 // });
 
-io.use((socket, next)=>{
-    cookieParser()(socket.request,socket.request.res, (err)=>{
-        if(err) return next(err);
+// io.use((socket, next)=>{
+//     cookieParser()(socket.request,socket.request.res, (err)=>{
+//         if(err) return next(err);
 
-        const token = socket.request.cookies.token;
-        if(!token) return next(new Error("Authentication Error"));
+//         const token = socket.request.cookies.token;
+//         if(!token) return next(new Error("Authentication Error"));
 
-        const decoded = jwt.verify(token, secretkeyJwt)
-        next();
-    })
+//         const decoded = jwt.verify(token, secretkeyJwt)
+//         next();
+//     })
 
-})
+// })
 
 
 
