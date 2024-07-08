@@ -35,16 +35,16 @@ app.get("/", (req, res) => {
     res.send("Hello world");
 });
 
-app.get("/login", (req, res) => {
-    const token = jwt.sign({ _id:'abcde'},secretkeyJwt)
+// app.get("/login", (req, res) => {
+//     const token = jwt.sign({ _id:'abcde'},secretkeyJwt)
 
-    res
-    .cookie("token",token,{httpOnly:true,secure:true,sameSite:"none"})
-    .json({
-        message:"Login Success"
-    })
+//     res
+//     .cookie("token",token,{httpOnly:true,secure:true,sameSite:"none"})
+//     .json({
+//         message:"Login Success"
+//     })
     
-});
+// });
 
 io.use((socket, next)=>{
     cookieParser()(socket.request,socket.request.res, (err)=>{
