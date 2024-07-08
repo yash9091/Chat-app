@@ -1,0 +1,86 @@
+/* App.css */
+@keyframes bubbleMove {
+    0% {
+      transform: translateY(0) scale(0.5);
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .bubble {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    background: rgb(186, 28, 28);
+    border-radius: 50%;
+    animation: bubbleMove 10s infinite;
+    animation-timing-function: linear;
+  }
+  
+  .bubble:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+  }
+  
+  .bubble:nth-child(2) {
+    left: 20%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+  }
+  
+  .bubble:nth-child(3) {
+    left: 30%;
+    animation-duration: 12s;
+    animation-delay: 4s;
+  }
+  
+  .bubble:nth-child(4) {
+    left: 40%;
+    animation-duration: 14s;
+    animation-delay: 6s;
+  }
+  
+  .bubble:nth-child(5) {
+    left: 50%;
+    animation-duration: 16s;
+    animation-delay: 8s;
+  }
+  
+  .bubble:nth-child(6) {
+    left: 60%;
+    animation-duration: 18s;
+    animation-delay: 10s;
+  }
+  
+  .bubble:nth-child(7) {
+    left: 70%;
+    animation-duration: 20s;
+    animation-delay: 12s;
+  }
+  
+  .bubble:nth-child(8) {
+    left: 80%;
+    animation-duration: 22s;
+    animation-delay: 14s;
+  }
+  
+  .bubble:nth-child(9) {
+    left: 90%;
+    animation-duration: 24s;
+    animation-delay: 16s;
+  }
+  
+  .bubble:nth-child(10) {
+    left: 100%;
+    animation-duration: 26s;
+    animation-delay: 20s;
+  }
+  
