@@ -3,9 +3,9 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 
-import jwt from 'jsonwebtoken'
-import cookieParser from "cookie-parser";
-const secretkeyJwt = "abcde";
+// import jwt from 'jsonwebtoken'
+// import cookieParser from "cookie-parser";
+// const secretkeyJwt = "abcde";
 const port = 3000;
 
 const app = express();
