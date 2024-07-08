@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 // import './App.css';  // Make sure to import the CSS file
 
 const App = () => {
-  const socket = useMemo(() => io('http://localhost:3000', { withCredentials: true }), []);
+  const socket = useMemo(() => io('https://chat-app-backend-blfy.onrender.com', { withCredentials: true }), []);
 
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
