@@ -83,17 +83,7 @@ const App = () => {
           </div>
         </form>
 
-        <div className="bg-gray-50 p-4 rounded-lg shadow-inner mb-6">
-          <h2 className="text-xl font-semibold mb-2">Online Users</h2>
-          <div className="space-y-2">
-            {Object.keys(onlineUsers).map((id) => (
-              <div key={id} className="p-2 rounded-lg shadow border border-gray-200">
-                <p className="text-gray-800 font-medium">{id}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
+       
         <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
           <h2 className="text-xl font-semibold mb-2">Messages</h2>
           <div className="space-y-4">
