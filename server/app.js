@@ -10,14 +10,14 @@ const server = createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://chat-app-frontend-bv0n.onrender.com",
         methods: ["GET", "POST"],
         credentials: true
     }
 });
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://chat-app-frontend-bv0n.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
 }));
@@ -30,17 +30,14 @@ app.get("/", (req, res) => {
     res.send("Hello world");
 });
 
-// let onlineUsers = {};
 
 io.on("connection", (socket) => {
     console.log("User connected ", socket.id);
-    // onlineUsers[socket.id] = { id: socket.id };
-
-    // io.emit("update-users", onlineUsers);
+    
 
     socket.on('message', ({ room, message }) => {
-        // const timestamp = new Date().toISOString();
-        console.log({ room, message, timestamp });
+        
+        console.log({ room, message, });
         socket.to(room).emit("receive-message", {
             message,
             senderId: socket.id,
@@ -55,7 +52,6 @@ io.on("connection", (socket) => {
 
     socket.on("disconnect", () => {
         console.log("User disconnected", socket.id);
-        // delete onlineUsers[socket.id];
-        // io.emit("update-users", onlineUsers);
+       
     });
 });
