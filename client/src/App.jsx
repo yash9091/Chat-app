@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { io } from 'socket.io-client';
-// import './App.css';  // Make sure to import the CSS file
 
 const App = () => {
   const socket = useMemo(() => io('http://localhost:3000', { withCredentials: true }), []);
@@ -30,7 +29,6 @@ const App = () => {
     });
 
     socket.on('receive-message', (data) => {
-      console.log(data);
       setMessages((prevMessages) => [...prevMessages, data]);
     });
 
@@ -46,7 +44,7 @@ const App = () => {
   return (
     <div className="relative min-h-screen bg-purple-100 flex items-center justify-center overflow-hidden">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md z-10">
-        <p className="text-1xl mb-4">My ID: {socketID}</p>
+        <p className="text-xl mb-4 font-semibold">My ID: <span className="font-mono">{socketID}</span></p>
 
         <form onSubmit={joinRoomHandler} className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Join Room</h2>
@@ -92,7 +90,8 @@ const App = () => {
           <div className="space-y-4">
             {messages.map((m, i) => (
               <div key={i} className="bg-white p-4 rounded-lg shadow border border-gray-200">
-                <p className="text-gray-800">{m}</p>
+                <p className="text-gray-800 font-medium">{m.message}</p>
+                <p className="text-gray-500 text-sm">From: <span className="font-mono">{m.senderId}</span></p>
               </div>
             ))}
           </div>
