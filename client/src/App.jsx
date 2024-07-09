@@ -2,13 +2,14 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { io } from 'socket.io-client';
 
 const App = () => {
-  const socket = useMemo(() => io('https://chat-app-backend-blfy.onrender.com', { withCredentials: true }), []);
+  const socket = useMemo(() => io('http://localhost:3000', { withCredentials: true }), []);
 
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [room, setRoom] = useState('');
   const [socketID, setSocketId] = useState('');
   const [roomName, setRoomName] = useState('');
+  // const [onlineUsers, setOnlineUsers] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,9 +33,9 @@ const App = () => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
 
-    socket.on('welcome', (message) => {
-      console.log(message);
-    });
+    // socket.on('update-users', (users) => {
+    //   setOnlineUsers(users);
+    // });
 
     return () => {
       socket.disconnect();
@@ -85,6 +86,17 @@ const App = () => {
           </div>
         </form>
 
+        <div className="bg-gray-50 p-4 rounded-lg shadow-inner mb-6">
+          <h2 className="text-xl font-semibold mb-2">Online Users</h2>
+          <div className="space-y-2">
+            {Object.keys(onlineUsers).map((id) => (
+              <div key={id} className="p-2 rounded-lg shadow border border-gray-200">
+                <p className="text-gray-800 font-medium">{id}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
           <h2 className="text-xl font-semibold mb-2">Messages</h2>
           <div className="space-y-4">
@@ -92,6 +104,7 @@ const App = () => {
               <div key={i} className="bg-white p-4 rounded-lg shadow border border-gray-200">
                 <p className="text-gray-800 font-medium">{m.message}</p>
                 <p className="text-gray-500 text-sm">From: <span className="font-mono">{m.senderId}</span></p>
+                {/* <p className="text-gray-400 text-xs">{new Date(m.timestamp).toLocaleString()}</p> */}
               </div>
             ))}
           </div>
@@ -99,11 +112,11 @@ const App = () => {
       </div>
 
       {/* Bubbles */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         {[...Array(10)].map((_, i) => (
           <div key={i} className="bubble"></div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
